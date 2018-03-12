@@ -32,8 +32,12 @@ router.get("/login", function(req, res) {
     res.render("login");
 });
 
-router.post("/login", passport.authenticate("local"), function(req, res) {
-    res.redirect("/" + req.user.id);
+router.post("/login", passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login",
+        failureFlash: true,
+        successFlash: "Logged In"
+    }), function(req, res){
 });
 
 //LOGOUT
