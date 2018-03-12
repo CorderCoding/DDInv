@@ -1,12 +1,13 @@
 //SETTING UP REQUIRED MODULES
-var methodOverride = require("method-override"),
-LocalStrategy      = require("passport-local"),
-User               = require("./models/user"),
-flash              = require("connect-flash"),
-passport           = require("passport"),
-mongoose           = require("mongoose"),
-express            = require("express"),
-app                = express();
+var expressSanitizer = require("express-sanitizer"),
+methodOverride       = require("method-override"),
+LocalStrategy        = require("passport-local"),
+User                 = require("./models/user"),
+flash                = require("connect-flash"),
+passport             = require("passport"),
+mongoose             = require("mongoose"),
+express              = require("express"),
+app                  = express();
 
 
 //REQUIRED ROUTES
@@ -21,6 +22,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(expressSanitizer());
 
 //DATABASE CONNECT
 mongoose.connect(process.env.DATABASEURL);
