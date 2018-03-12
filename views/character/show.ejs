@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+
+<h1>INVENTORY PAGE</h1>
+<% if(currentUser && character.player.equals(currentUser._id) || currentUser && currentUser.isAdmin || currentUser && currentUser.isSU) { %>
+    <form action="/<%= currentUser._id %>/character/<%= character._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete Character</button>
+    </form>
+
+    <a class="btn btn-primary" href="/<%= currentUser._id %>/character/<%= character._id%>/container/new">Add New Container</a>
+    <a class="btn btn-primary" href="/<%= currentUser._id %>/character/<%= character._id%>/item/new">Add New Item</a>
+<% } %>
+<div class="row">
+    
+    <ul class="list-group col-sm-6">
+        <h3>Containers</h3>
+        <% character.containers.forEach(function(container) { %>
+            <li="list-group-item">
+                <a class="btn btn-light" href="/<%= currentUser._id %>/character/<%= character._id %>/container/<%= container._id %>/edit">
+                    <%= container.name %> - 
+                    <%= container.weight %> - 
+                    <%= container.value %> - 
+                    <%= container.carryCap %> - 
+                    <%= container.rarity %> - 
+                    <% if(container.isMagical) { %> Yes <% } else { %> No <% } %>
+                </a>
+                <% if(currentUser && character.player.equals(currentUser._id)) { %>
+                    <form action="/<%= currentUser._id %>/character/<%= character._id %>/container/<%= container._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete Item</button>
+                    </form>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+    <ul class="list-group col-sm-6">
+        <h3>Items</h3>
+        <% character.inventory.forEach(function(item) { %>
+            <li="list-group-item">
+                <a class="btn btn-light" href="/<%= currentUser._id %>/character/<%= character._id %>/item/<%= item._id %>/edit">
+                    <%= item.name %> - 
+                    <%= item.weight %> - 
+                    <%= item.value %> - 
+                    <%= item.rarity %> - 
+                    <% if(item.isMagical) { %> Yes - <% } else { %> No - <% } %>
+                    <% if(item.requiresAttunement) { %> Yes <% } else { %> No <% } %>
+                </a>
+                <% if(currentUser && character.player.equals(currentUser._id)) { %>
+                    <form action="/<%= currentUser._id %>/character/<%= character._id %>/item/<%= item._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete Item</button>
+                    </form>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+<p><a class="btn btn-secondary" href="/<%= currentUser._id %>">Back</a></p>
+
+<% include ../partials/footer %>

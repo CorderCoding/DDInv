@@ -1,0 +1,48 @@
+<% include ../../partials/header %>
+
+<h1>EDIT ITEM</h1>
+<% if(currentUser && character.player.equals(currentUser._id) || currentUser && currentUser.isAdmin || currentUser && currentUser.isSU) { %>
+    <form action="/<%= currentUser._id %>/character/<%= character._id %>/item/<%= item._id %>?_method=PUT" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <h5>Name</h5>
+                <input type="text" name="item[name]" value="<%= item.name %>" required>
+                <h5>Weight</h5>
+                <input type="number" name="item[weight]" min=".01" step=".01" value="<%= item.weight %>" required>
+                <h5>Value</h5>
+                <input type="number" name="item[value]" value="<%= item.value %>" required>
+            </div>
+            <div class="col">
+                <h5>Item Rarity:</h5>
+                <div class="form-group">
+                    <select name="item[rarity]" required>
+                        <option selected="selected">Common</option>
+                        <option>Uncommon</option>
+                        <option>Rare</option>
+                        <option>Very Rare</option>
+                        <option>Legendary</option>
+                    </select>
+                </div>
+                <h5>Is this item magical?</h5>
+                <div class="form-group">
+                    <label for="magical-yes">Yes</label>
+                    <input id="magical-yes" type="radio" name="item[isMagical]" value="true">
+                    <label for="magical-no">No</label>
+                    <input id="magical-no" type="radio" name="item[isMagical]" value="false" checked>
+                </div>
+                <h5>Does this item require attunement?</h5>
+                <div class="form-group">
+                    <label for="attune-yes">Yes</label>
+                    <input id="attuen-yes" type="radio" name="item[requiresAttunement]" value="true">
+                    <label for="attune-no">No</label>
+                    <input id="attune-no" type="radio" name="item[requiresAttunement]"value="false" checked>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success">Submit</button>
+    </form>
+<% } %>
+<a class="btn btn-secondary"  href="/<%= currentUser._id %>/character/<%= character._id %>">Back</a>
+
+
+<% include ../../partials/footer %>

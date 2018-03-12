@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<h1>Edit Character</h1>
+
+<% if(currentUser && character.player.equals(currentUser._id) || currentUser && currentUser.isAdmin || currentUser && currentUser.isSU) { %>
+    <form action="/<%= currentUser._id %>/character/<%= character._id %>?_method=PUT" method="POST">
+        <input type="text" name="character[name]" value="<%= character.name %>"></input>    
+        <button class="btn btn-success">Submit</button>    
+    </form>
+<% } %>
+<p><a class="btn btn-secondary"  href="/<%= currentUser.id %>">Back</a></p>
+
+<% include ../partials/footer %>

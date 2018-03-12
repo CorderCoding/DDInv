@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<h1>Characters</h1>
+<% if(currentUser) { %>
+    <p><a class="btn btn-primary" href="/<%= currentUser._id %>/character/new" method="POST">New Character</a></p>
+<% } %>
+
+<ul class="list-group">
+    <% user.characters.forEach(function(character) { %>
+        <li class="list-group-item">
+            <a class="btn btn-light" href="/<%= currentUser._id %>/character/<%= character._id %>">
+                <%= character.name %>
+            </a>
+            <% if(currentUser && character.player.equals(currentUser._id) || currentUser && currentUser.isAdmin || currentUser && currentUser.isSU) { %>
+                <a class="btn btn-warning float-right" href="/<%= currentUser._id %>/character/<%= character._id %>/edit">
+                    Edit Name
+                </a>
+            <% } %>
+        </li>
+    <% }); %>
+</ul>
+
+<% include ../partials/footer %>

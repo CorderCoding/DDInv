@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div class="jumbotron">
+    <h1>Welcome to the D&D Inventory Tracker!</h1>
+    <h4>The best way to keep track of all of your character inventory's in one convenient place!</h4>
+    <p>Innovative inventory tracking to keep track of weight, encumbrance, magic items, and more. 
+    Dynamically shift inventory items between containers including normal packs and dimensional packs alike.
+    Homebrew friendly! Add your own items, define your own rules, make it yours! (Or more likely your DM's....)</p>
+    <% if(!currentUser) { %>
+        <a href="/register" class="btn btn-secondary">Register to Begin</a>
+        <a href="/login" class="btn btn-secondary">Already registered? Log in here.</a>
+    <% } else { %>
+        <h5>Welcome back, <%= currentUser.username %>!</h5><a href="/<%= currentUser._id %>"  class="btn btn-secondary">Go to your character list.</a>
+    <% } %>
+</div>
+
+
+<% include ./partials/footer %>

@@ -1,0 +1,16 @@
+.navbar-nav {
+    padding: 0 30px;
+}
+
+.jumbotron {
+    margin-top: 10px;
+    background-color: #d1d1d1;
+}
+
+form {
+    width: 45%;
+}
+
+ul {
+    width: 50%;
+}

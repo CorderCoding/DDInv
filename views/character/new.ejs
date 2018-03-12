@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<h1>New Character</h1>
+<% if(currentUser) { %>
+    <form action="/<%= currentUser._id %>" method="POST">
+        <input type="text" name="character[name]" placeholder="Character Name"></input>    
+        <button class="btn btn-success">Create</button>    
+    </form>
+    <p><a class="btn btn-secondary"  href="/<%= currentUser.id %>">Back</a></p>
+<% } %>
+
+<% include ../partials/footer %>
