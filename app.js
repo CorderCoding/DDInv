@@ -45,9 +45,9 @@ app.use(function(req, res, next){
 
 //SETTING ROUTES
 app.use("/", indexRoutes);
-app.use("/:id", charRoutes);
-app.use("/:id/character/:char_id", itemRoutes);
-app.use("/:id/character/:char_id", contRoutes);
+app.use("/user/:id", charRoutes);
+app.use("/user/:id/character/:char_id", itemRoutes);
+app.use("/user/:id/character/:char_id", contRoutes);
 
 
 //START SERVER

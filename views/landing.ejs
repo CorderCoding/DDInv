@@ -10,7 +10,7 @@
         <a href="/register" class="btn btn-secondary">Register to Begin</a>
         <a href="/login" class="btn btn-secondary">Already registered? Log in here.</a>
     <% } else { %>
-        <h5>Welcome back, <%= currentUser.username %>!</h5><a href="/<%= currentUser._id %>"  class="btn btn-secondary">Go to your character list.</a>
+        <h5>Welcome back, <%= currentUser.username %>!</h5><a href="/user/<%= currentUser._id %>"  class="btn btn-secondary">Go to your character list.</a>
     <% } %>
 </div>
 

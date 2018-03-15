@@ -45,7 +45,7 @@ router.post("/", isLoggedIn, function(req, res) {
                     character.save();
                     user.characters.push(character.id);
                     user.save();
-                    res.redirect("/" + req.params.id);
+                    res.redirect("/user/" + req.params.id);
                 }
             });
         }
@@ -69,7 +69,7 @@ router.put("/character/:char_id", isLoggedIn, checkUserCharacter, function(req, 
         if(err) {
             console.log(err);
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect("/user/" + req.params.id);
         }
     });
 });
@@ -95,7 +95,7 @@ router.delete("/character/:char_id", isLoggedIn, checkUserCharacter, function(re
                 if(err) {
                     console.log(err);
                 } else {
-                    res.redirect("/" + req.params.id);
+                    res.redirect("/user/" + req.params.id);
                 }
             });
         }

@@ -30,7 +30,7 @@ router.post("/item", isLoggedIn, function(req, res) {
                     item.save();
                     character.inventory.push(item._id);
                     character.save();
-                    res.redirect("/" + req.params.id + "/character/" + character._id);
+                    res.redirect("/user/" + req.params.id + "/character/" + character._id);
                 }
             });
         }
@@ -60,7 +60,7 @@ router.put("/item/:item_id", isLoggedIn, function(req, res){
         if(err) {
             console.log(err);
         } else{
-            res.redirect("/" + req.params.id + "/character/" + req.params.char_id);
+            res.redirect("/user/" + req.params.id + "/character/" + req.params.char_id);
         }
     });
 });
@@ -71,7 +71,7 @@ router.delete("/item/:item_id", isLoggedIn, function(req,res) {
         if(err) {
             console.log(err);
         } else {
-            res.redirect("/" + req.params.id + "/character/" + req.params.char_id);
+            res.redirect("/user/" + req.params.id + "/character/" + req.params.char_id);
         }
     });
 });

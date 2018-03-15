@@ -2,7 +2,7 @@
 
 <h1>ADD ITEM</h1>
 <% if(currentUser && character.player.equals(currentUser._id) || currentUser && currentUser.isAdmin || currentUser && currentUser.isSU) { %>
-    <form action="/<%= currentUser._id %>/character/<%= character._id %>/item" method="POST">
+    <form action="/user/<%= currentUser._id %>/character/<%= character._id %>/item" method="POST">
         <div class="form-row">
             <div class="form-group col">
                 <h5>Name</h5>
@@ -42,6 +42,6 @@
         <button class="btn btn-success">Submit New Item</button>
     </form>
 <% } %>
-<a class="btn btn-secondary" href="/<%= currentUser._id %>/character/<%= character._id %>">Back</a>
+<a class="btn btn-secondary" href="/user/<%= currentUser._id %>/character/<%= character._id %>">Back</a>
 
 <% include ../../partials/footer %>
