@@ -51,7 +51,7 @@ app.use("/user/:id/character/:char_id", contRoutes);
 
 
 //START SERVER
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen("8000", "0.0.0.0", function() {
     console.log("========================================");
     console.log("        D&D INVENTORY APP RUNNING");
     console.log("========================================");
